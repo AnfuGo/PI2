@@ -111,34 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingOverlay.style.display = 'flex';
 
         const formData = new FormData();
-        formData.append("file", fileInput.files[0]);
+formData.append("file", fileInput.files[0]);
 
-        try {
-            const res = await fetch(`${API_URL}/analisar`, {
-                method: "POST",
-                body: formData
-            });
-
-            const data = await res.json();
-
-            localStorage.setItem("resultado", JSON.stringify({
-                filename: "arquivo.xml",
-                resultado: {
-                    success: true,
-                    resultados: [
-                        { status: "success", message: "OK..." },
-                        { status: "warning", message: "Atenção..." },
-                        { status: "error", message: "Erro..." }
-                    ]
-                }
-            }));
-
+fetch("https://pi2-production.up.railway.app/upload", {
+    method: "POST",
+    body: formData
+})
+.then(r => r.json())
+.then(data => console.log(data))
+.catch(err => console.error(err));
             window.location.href = "resultado.html";
 
-        } catch (err) {
-            alert("Erro ao enviar arquivo");
-            console.error(err);
-        }
     });
 
 });
