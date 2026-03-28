@@ -61,7 +61,7 @@
                                 <div class="step-number">2</div>
                                 <div class="step-content">
                                     <strong>Desenhe o diagrama do sistema</strong>
-                                    <span>Baixe o template base do GRAFCET desenvolvido no Codesys.</span>
+                                    <span>Para começar, baixe o template base do GRAFCET desenvolvido no Codesys. Esse arquivo serve como ponto de partida para o seu projeto.</span>
 
                                     <a href="template_grafcet_FMS.project" 
                                        class="btn btn-secondary" download>
@@ -74,7 +74,7 @@
                                 <div class="step-number">3</div>
                                 <div class="step-content">
                                     <strong>Liste suas variáveis</strong>
-                                    <span>Identifique entradas e saídas do sistema.</span>
+                                    <span>Identifique todas as “entradas” (ex: sensores, botões) e “saídas” (ex: motores, pistões, esteiras) do sistema.</span>
                                 </div>
                             </li>
 
@@ -82,7 +82,7 @@
                                 <div class="step-number">4</div>
                                 <div class="step-content">
                                     <strong>Defina as etapas</strong>
-                                    <span>Transforme cada ação em uma etapa no GRAFCET.</span>
+                                    <span>Transforme cada ação principal do processo (ex: “Ligar esteira”, “Avançar pistão”) em uma etapa no GRAFCET.</span>
                                 </div>
                             </li>
 
@@ -90,7 +90,7 @@
                                 <div class="step-number">5</div>
                                 <div class="step-content">
                                     <strong>Estabeleça as transições</strong>
-                                    <span>Defina condições para mudança entre etapas.</span>
+                                    <span>Para cada etapa, pergunte-se: “O que precisa acontecer para que esta ação termine e a próxima comece?”</span>
                                 </div>
                             </li>
 
@@ -98,7 +98,7 @@
                                 <div class="step-number">6</div>
                                 <div class="step-content">
                                     <strong>Revise o fluxo</strong>
-                                    <span>Verifique lógica, paralelismo e decisões.</span>
+                                    <span>Verifique se a sequência faz sentido. Onde processos acontecem em paralelo? Onde há decisões?</span>
                                 </div>
                             </li>
 
@@ -119,28 +119,27 @@
                         <div class="info-box">
                             <span>🤖</span>
                             <div>
-                                <strong>O que o analisador faz:</strong>
-                                <ul>
-                                    <li>✅ Verifica etapa inicial</li>
-                                    <li>✅ Verifica transições</li>
-                                    <li>✅ Verifica estrutura XML</li>
+                                <strong>O que o analisador faz:</strong> Ele lê o arquivo exportado do <strong>Codesys</strong> no formato <em>PLCopenXML</em> e verifica:
+                                <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
+                                    <li>✅ Se existe exatamente uma etapa inicial no GRAFCET;</li>
+                                    <li>✅ Se todas as transições possuem condição definida;</li>
+                                    <li>✅ E se o arquivo XML está completo e bem estruturado.</li>
                                 </ul>
-                                <p>⚠️ Apenas valida estrutura, não resolve o projeto.</p>
+                                <p style="margin-top: 0.5rem;">Com um GRAFCET bem estruturado e planejado fica mais fácil fazer a programação do CLP em Ladder.</p>
+                                <p style="margin-top: 0.5rem;">⚠️ <strong>Esse analisador apenas verifica a estrutura do seu modelo, ele não dá respostas do projeto.</strong></p>
+
                             </div>
                         </div>
 
                         <div class="info-box">
                             <span>💻</span>
                             <div>
-                                <strong>Dica:</strong>
-                                <a href="https://store.codesys.com/en/codesys.html" target="_blank">
-                                    Baixar Codesys
-                                </a>
+                                <strong>Dica:</strong> Caso não tenha o Codesys <a href="https://store.codesys.com/en/codesys.html" target="_blank">baixe aqui</a>.
                             </div>
                         </div>
 
                         <p class="upload-description">
-                            Envie seu arquivo XML exportado do Codesys:
+                            Quando o modelo estiver pronto, exporte do <strong>Codesys</strong> em formato <strong>.xml</strong> e envie aqui para análise automática:
                         </p>
 
                         <!-- FORM SEM FLASK -->
@@ -175,7 +174,7 @@
                         <div class="info-box" style="margin-top: 1rem;">
                             <span>💡</span>
                             <div>
-                                <strong>Importante:</strong> Use arquivos PLCopenXML do Codesys.
+                                <strong>Importante:</strong> Use apenas arquivos exportados no formato <strong>PLCopenXML</strong> do <strong>Codesys</strong>.
                             </div>
                         </div>
 
