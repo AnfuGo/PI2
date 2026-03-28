@@ -74,6 +74,15 @@ def analisar():
 
         resultado_da_analise = analisar_arquivo_grafcet(caminho_arquivo)
 
+        # 🔴 se o analyser já detectou erro
+        if not resultado_da_analise.get("success", True):
+            return jsonify({
+                "success": False,
+                "filename": filename,
+                "error": resultado_da_analise.get("error", "Erro na análise")
+            }), 400
+
+        # ✔ sucesso
         return jsonify({
             "success": True,
             "filename": filename,
@@ -83,7 +92,8 @@ def analisar():
     except Exception as e:
         return jsonify({
             "success": False,
-            "error": resultado_da_analise.error
+            "filename": filename,
+            "error": f"Erro ao processar arquivo: {str(e)}"
         }), 500
 
 # =========================
