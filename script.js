@@ -1,4 +1,4 @@
-const API_URL = "https://SEU-BACKEND.up.railway.app";
+const API_URL = "https://pi2-production.up.railway.app";
 
 // =======================
 // NAVEGAÇÃO
