@@ -19,7 +19,7 @@ function preencherResultado(data) {
             <div class="error-card">
                 <div class="error-icon">❌</div>
                 <h2>Erro ao Processar Arquivo</h2>
-                <p>${data.resultado.error}</p>
+                <p>${data.error}</p>
             </div>
         `;
         return;
