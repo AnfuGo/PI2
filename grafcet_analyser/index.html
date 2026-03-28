@@ -1,0 +1,120 @@
+<!-- FERRAMENTA EDUCACIONAL ORIENTATIVA PARA ALUNOS DE GRADUAÇÃO
+NA DISCIPLINA DE MANUFATURA INTEGRADA DA UTFPR
+    Copyright (C) 2025
+Alunos: Jhulia Andrade de Souza Nogueira e Henrique Marques Dias Chaves
+Orientador: Prof. Dr. Sidney Carlos Gasoto
+Banca: Prof. Dr. Luiz Carlos de Abreu Rodrigues e Prof. Dr. Márcio Alves Sodré de Souza
+Palavras-chave: manufatura integrada; programação de CLPs; interface de usuário; ferramenta educacional.
+Data da defesa: 27/11/2025 -->
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Orientativo - Analisador GRAFCET</title>
+
+    <!-- ajuste caminho -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" onclick="goIndex()" class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Analisador SFC/GRAFCET</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <!-- ALERTAS (JS vai preencher se quiser) -->
+        <div class="container" id="alerts"></div>
+
+        <div class="container">
+            <div class="hero">
+                <h1 class="hero-title">Manufatura Integrada</h1>
+                <p class="hero-subtitle">
+                    Guia interativo para o projeto final de FMS
+                </p>
+                <p class="hero-description">
+                    Antes de começar o projeto e partir para a programação do CLP...
+                </p>
+            </div>
+
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📋 Passos para um bom planejamento</h2>
+                    </div>
+                    <div class="card-body">
+                        <ol class="steps-list">
+                            <li>...</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>✅ Valide seu GRAFCET</h2>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p class="upload-description">
+                            Envie seu arquivo XML:
+                        </p>
+
+                        <!-- 🔥 IMPORTANTE: remover action -->
+                        <form class="upload-form" id="uploadForm">
+
+                            <div class="file-input-wrapper">
+                                <input type="file" id="file" accept=".xml" required>
+
+                                <label for="file" class="file-input-label">
+                                    <span class="file-icon">📁</span>
+                                    <span class="file-text">Escolher arquivo XML</span>
+                                </label>
+
+                                <span class="file-name" id="fileName">
+                                    Nenhum arquivo selecionado
+                                </span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span id="btnIcon">🔍</span>
+                                <span id="btnText">Analisar meu GRAFCET</span>
+                            </button>
+
+                            <div class="loading-overlay" id="loadingOverlay">
+                                <div class="loading-spinner"></div>
+                                <p class="loading-text">Analisando...</p>
+                            </div>
+                        </form>
+
+                        <!-- 🔥 caminho direto -->
+                        <a href="template_grafcet_FMS.project" download>
+                            ⬇️ Baixar Template
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Manufatura Integrada - Projeto FMS © 2025</p>
+        </div>
+    </footer>
+
+    <!-- JS externo -->
+    <script src="script.js"></script>
+
+</body>
+</html>
