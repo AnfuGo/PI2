@@ -15,7 +15,7 @@ def extrair_namespace(root):
     return ''
 
 def verificar_etapa_inicial(root, ns):
-    path = f".//{{{ns}}}step[@initialStep='true']"
+    path = f".//{tag(ns, 'step')}[@initialStep='true']"
     initial_steps = root.findall(path)
     if len(initial_steps) == 0:
         return {'status': 'error', 'message': 'O modelo não possui nenhuma etapa inicial.'}
@@ -172,9 +172,12 @@ def analisar_arquivo_grafcet(caminho_do_arquivo):
             verificar_conexoes_orfas(root, ns)
         ]
 
-        return {'success': True, 'resultados': resultados}
+        return {'resultados': resultados}
 
     except ET.ParseError:
         return {'success': False, 'error': 'O arquivo não é um XML válido ou está corrompido.'}
     except Exception as e:
         return {'success': False, 'error': f'Erro inesperado ao processar: {str(e)}'}
+    
+def tag(ns, name):
+    return f"{{{ns}}}{name}" if ns else name
