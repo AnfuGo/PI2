@@ -106,6 +106,7 @@ function preencherResultado(data) {
     document.getElementById("results").innerHTML = lista;
 
     document.getElementById("stats").innerHTML = `
+        <div class="summary-card">
             <h3>📋 Resumo da Análise</h3>
             <div class="summary-stats">
                 <div class="stat">
@@ -121,6 +122,7 @@ function preencherResultado(data) {
                     <span class="stat-label">Erros</span>
                 </div>
             </div>
+        </div>
     `;
 }
 
@@ -166,28 +168,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData
             });
 
-            // Verifica erro HTTP (500, 400, etc)
-            if (!res.ok) {
-                throw new Error("Erro no servidor");
+            let data;
+
+            try {
+                data = await res.json();
+            } catch {
+                throw new Error("Resposta inválida do servidor");
             }
 
-            const data = await res.json();
+            console.log("Resposta backend:", data);
 
-            console.log("Resposta backend:", data); // DEBUG
+            // 🔴 AGORA SIM: trata erro corretamente
+            if (!res.ok || !data.success) {
+                localStorage.setItem("resultado", JSON.stringify({
+                    success: false,
+                    error: data.error || "Erro desconhecido"
+                }));
 
-            // Salva resultado real
+                window.location.href = "resultado.html";
+                return;
+            }
+
+            // sucesso
             localStorage.setItem("resultado", JSON.stringify(data));
-
-            // Redireciona
             window.location.href = "resultado.html";
 
         } catch (err) {
-            alert("Erro ao enviar ou processar arquivo");
+            alert("Erro ao conectar com o servidor");
             console.error(err);
-
-            // opcional: esconder loading
-            // loadingOverlay.style.display = 'none';
         }
-    });
+            });
 
 });
