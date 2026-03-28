@@ -1,14 +1,3 @@
-<!-- FERRAMENTA EDUCACIONAL ORIENTATIVA PARA ALUNOS DE GRADUAÇÃO
-NA DISCIPLINA DE MANUFATURA INTEGRADA DA UTFPR
-    Copyright (C) 2025
-Alunos: Jhulia Andrade de Souza Nogueira e Henrique Marques Dias Chaves
-Orientador: Prof. Dr. Sidney Carlos Gasoto
-Banca: Prof. Dr. Luiz Carlos de Abreu Rodrigues e Prof. Dr. Márcio Alves Sodré de Souza
-Palavras-chave: manufatura integrada; programação de CLPs; interface de usuário; ferramenta educacional.
-Data da defesa: 27/11/2025 -->
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,14 +5,13 @@ Data da defesa: 27/11/2025 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia Orientativo - Analisador GRAFCET</title>
 
-    <!-- ajuste caminho -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="#" onclick="goIndex()" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">📊</span>
                 <span class="logo-text">Analisador SFC/GRAFCET</span>
             </a>
@@ -32,7 +20,6 @@ Data da defesa: 27/11/2025 -->
 
     <main class="main-content">
 
-        <!-- ALERTAS (JS vai preencher se quiser) -->
         <div class="container" id="alerts"></div>
 
         <div class="container">
@@ -42,22 +29,86 @@ Data da defesa: 27/11/2025 -->
                     Guia interativo para o projeto final de FMS
                 </p>
                 <p class="hero-description">
-                    Antes de começar o projeto e partir para a programação do CLP...
+                    Antes de começar o projeto e partir para a programação do CLP, é essencial planejar bem o funcionamento do seu sistema FMS. 
+                    Leia as informações abaixo para entender como criar um <strong>GRAFCET/SFC</strong> eficiente e utilizar a ferramenta de análise automática.
+                    <br><br>
+                    <strong>É importante ter o software Codesys instalado</strong>. Com ele, 
+                    você pode criar e testar seu <strong>GRAFCET</strong> na sua própria máquina, sem precisar esperar a aula de laboratório.
                 </p>
             </div>
 
             <div class="grid-container">
+
+                <!-- ========================= -->
+                <!-- PASSOS -->
+                <!-- ========================= -->
                 <div class="card">
                     <div class="card-header">
                         <h2>📋 Passos para um bom planejamento</h2>
                     </div>
                     <div class="card-body">
                         <ol class="steps-list">
-                            <li>...</li>
+
+                            <li>
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>Entenda o processo</strong>
+                                    <span>O GRAFCET é um ótimo aliado no planejamento e desenvolvimento do seu projeto FMS. Antes de programar, entenda o fluxo de operações e defina os objetivos principais.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>Desenhe o diagrama do sistema</strong>
+                                    <span>Baixe o template base do GRAFCET desenvolvido no Codesys.</span>
+
+                                    <a href="template_grafcet_FMS.project" 
+                                       class="btn btn-secondary" download>
+                                        ⬇️ Baixar Template GRAFCET
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>Liste suas variáveis</strong>
+                                    <span>Identifique entradas e saídas do sistema.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <strong>Defina as etapas</strong>
+                                    <span>Transforme cada ação em uma etapa no GRAFCET.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <strong>Estabeleça as transições</strong>
+                                    <span>Defina condições para mudança entre etapas.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <strong>Revise o fluxo</strong>
+                                    <span>Verifique lógica, paralelismo e decisões.</span>
+                                </div>
+                            </li>
+
                         </ol>
                     </div>
                 </div>
 
+                <!-- ========================= -->
+                <!-- VALIDAÇÃO -->
+                <!-- ========================= -->
                 <div class="card">
                     <div class="card-header">
                         <h2>✅ Valide seu GRAFCET</h2>
@@ -65,11 +116,34 @@ Data da defesa: 27/11/2025 -->
 
                     <div class="card-body">
 
+                        <div class="info-box">
+                            <span>🤖</span>
+                            <div>
+                                <strong>O que o analisador faz:</strong>
+                                <ul>
+                                    <li>✅ Verifica etapa inicial</li>
+                                    <li>✅ Verifica transições</li>
+                                    <li>✅ Verifica estrutura XML</li>
+                                </ul>
+                                <p>⚠️ Apenas valida estrutura, não resolve o projeto.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <span>💻</span>
+                            <div>
+                                <strong>Dica:</strong>
+                                <a href="https://store.codesys.com/en/codesys.html" target="_blank">
+                                    Baixar Codesys
+                                </a>
+                            </div>
+                        </div>
+
                         <p class="upload-description">
-                            Envie seu arquivo XML:
+                            Envie seu arquivo XML exportado do Codesys:
                         </p>
 
-                        <!-- 🔥 IMPORTANTE: remover action -->
+                        <!-- FORM SEM FLASK -->
                         <form class="upload-form" id="uploadForm">
 
                             <div class="file-input-wrapper">
@@ -92,17 +166,22 @@ Data da defesa: 27/11/2025 -->
 
                             <div class="loading-overlay" id="loadingOverlay">
                                 <div class="loading-spinner"></div>
-                                <p class="loading-text">Analisando...</p>
+                                <p class="loading-text">Analisando seu GRAFCET...</p>
+                                <p class="loading-subtext">Isso pode levar alguns segundos</p>
                             </div>
+
                         </form>
 
-                        <!-- 🔥 caminho direto -->
-                        <a href="template_grafcet_FMS.project" download>
-                            ⬇️ Baixar Template
-                        </a>
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <span>💡</span>
+                            <div>
+                                <strong>Importante:</strong> Use arquivos PLCopenXML do Codesys.
+                            </div>
+                        </div>
 
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
@@ -113,8 +192,8 @@ Data da defesa: 27/11/2025 -->
         </div>
     </footer>
 
-    <!-- JS externo -->
-    <script src="script.js"></script>
+    <!-- SCRIPT PRINCIPAL -->
+    <script src="./js/scripts.js"></script>
 
 </body>
 </html>

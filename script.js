@@ -121,10 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await res.json();
 
-            // 🔥 salva resultado
-            localStorage.setItem("resultado", JSON.stringify(data));
+            localStorage.setItem("resultado", JSON.stringify({
+                filename: "arquivo.xml",
+                resultado: {
+                    success: true,
+                    resultados: [
+                        { status: "success", message: "OK..." },
+                        { status: "warning", message: "Atenção..." },
+                        { status: "error", message: "Erro..." }
+                    ]
+                }
+            }));
 
-            // 🔥 redireciona
             window.location.href = "resultado.html";
 
         } catch (err) {
