@@ -97,7 +97,6 @@ function preencherResultado(data) {
     document.getElementById("results").innerHTML = lista;
 
     document.getElementById("stats").innerHTML = `
-        <div class="summary-card">
             <h3>📋 Resumo da Análise</h3>
             <div class="summary-stats">
                 <div class="stat">
@@ -113,7 +112,6 @@ function preencherResultado(data) {
                     <span class="stat-label">Erros</span>
                 </div>
             </div>
-        </div>
     `;
 }
 
