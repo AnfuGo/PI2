@@ -46,6 +46,7 @@ def analisar():
     if 'file' not in request.files:
         return jsonify({
             "success": False,
+            "filename": filename,
             "error": "Nenhum arquivo enviado"
         }), 400
 
@@ -54,12 +55,14 @@ def analisar():
     if file.filename == '':
         return jsonify({
             "success": False,
+            "filename": filename,
             "error": "Nome de arquivo inválido"
         }), 400
 
     if not allowed_file(file.filename):
         return jsonify({
             "success": False,
+            "filename": filename,
             "error": "Extensão inválida. Use .xml"
         }), 400
 

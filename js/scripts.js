@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok || !data.success) {
                 localStorage.setItem("resultado", JSON.stringify({
                     success: false,
-                    filename: data.fileName,
+                    filename: data.filename,
                     error: data.error || "Erro desconhecido"
                 }));
 
