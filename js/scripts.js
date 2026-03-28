@@ -178,10 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             console.log("Resposta backend:", data);
 
-            // 🔴 AGORA SIM: trata erro corretamente
             if (!res.ok || !data.success) {
                 localStorage.setItem("resultado", JSON.stringify({
                     success: false,
+                    filename: data.fileName,
                     error: data.error || "Erro desconhecido"
                 }));
 
