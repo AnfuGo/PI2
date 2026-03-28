@@ -15,15 +15,24 @@ function preencherResultado(data) {
     document.getElementById("filename").innerText = data.filename;
 
     if (!data.success) {
-        document.getElementById("errorBox").innerHTML = `
-            <div class="error-card">
-                <div class="error-icon">❌</div>
-                <h2>Erro ao Processar Arquivo</h2>
-                <p>${data.error}</p>
-            </div>
-        `;
-        return;
-    }
+    document.getElementById("errorBox").innerHTML = `
+        <div class="error-card">
+            <div class="error-icon">❌</div>
+            <h2>Erro ao Processar Arquivo</h2>
+            <p>${data.error}</p>
+            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                Verifique se o arquivo está em formato PLCopenXML exportado corretamente do Codesys.
+            </p>
+        </div>
+    `;
+
+    // limpa outras áreas (opcional, mas recomendado)
+    document.getElementById("summary").innerHTML = "";
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("stats").innerHTML = "";
+
+    return;
+}
 
     const resultados = data.resultados;
 
