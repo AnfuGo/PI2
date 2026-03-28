@@ -83,7 +83,7 @@ def analisar():
     except Exception as e:
         return jsonify({
             "success": False,
-            "error": {f'Erro ao processar arquivo: {str(e)}', 'error'}
+            "error": resultado_da_analise.error
         }), 500
 
 # =========================
