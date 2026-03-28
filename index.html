@@ -193,6 +193,38 @@
 
     <!-- SCRIPT PRINCIPAL -->
     <script src="./js/scripts.js"></script>
+    <script>
+    const fileInput = document.getElementById('file');
+    const fileNameDisplay = document.getElementById('fileName');
+    const uploadForm = document.getElementById('uploadForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    fileInput.addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || 'Nenhum arquivo selecionado';
+        fileNameDisplay.textContent = fileName;
+        
+        if (e.target.files[0]) {
+            fileNameDisplay.style.color = 'var(--success-color)';
+            fileNameDisplay.style.fontWeight = '600';
+        } else {
+            fileNameDisplay.style.color = 'var(--text-secondary)';
+            fileNameDisplay.style.fontWeight = 'normal';
+        }
+    });
+    
+    uploadForm.addEventListener('submit', function(e) {
+        submitBtn.disabled = true;
+        btnIcon.textContent = '⏳';
+        btnText.textContent = 'Processando...';
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+        
+        loadingOverlay.style.display = 'flex';
+    });
+    </script>
 
 </body>
 </html>
