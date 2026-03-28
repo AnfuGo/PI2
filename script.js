@@ -3,16 +3,8 @@ const API_URL = "https://SEU-BACKEND.up.railway.app";
 // =======================
 // NAVEGAÇÃO
 // =======================
-async function carregarPagina(nome) {
-    const res = await fetch(`${nome}.html`);
-    const html = await res.text();
-    document.open();
-    document.write(html);
-    document.close();
-}
-
 function goIndex() {
-    carregarPagina("index");
+    window.location.href = "index.html";
 }
 
 // =======================
@@ -86,7 +78,7 @@ function preencherResultado(data) {
 }
 
 // =======================
-// INDEX
+// INDEX (UPLOAD)
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -129,11 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await res.json();
 
-            await carregarPagina("resultado");
+            // 🔥 salva resultado
+            localStorage.setItem("resultado", JSON.stringify(data));
 
-            setTimeout(() => {
-                preencherResultado(data);
-            }, 100);
+            // 🔥 redireciona
+            window.location.href = "resultado.html";
 
         } catch (err) {
             alert("Erro ao enviar arquivo");

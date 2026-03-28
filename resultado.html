@@ -70,6 +70,19 @@ Data da defesa: 27/11/2025 -->
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const data = JSON.parse(localStorage.getItem("resultado"));
+
+            if (!data) {
+                alert("Nenhum resultado encontrado");
+                window.location.href = "index.html";
+                return;
+            }
+
+            preencherResultado(data);
+        });
+    </script>
 </body>
 </html>
