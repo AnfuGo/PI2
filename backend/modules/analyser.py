@@ -172,7 +172,10 @@ def analisar_arquivo_grafcet(caminho_do_arquivo):
             verificar_conexoes_orfas(root, ns)
         ]
 
-        return {'resultados': resultados}
+        return {
+            'success': True,
+            'resultados': resultados
+        }
 
     except ET.ParseError:
         return {'success': False, 'error': 'O arquivo não é um XML válido ou está corrompido.'}

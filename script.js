@@ -14,7 +14,7 @@ function preencherResultado(data) {
 
     document.getElementById("filename").innerText = data.filename;
 
-    if (!data.resultado.success) {
+    if (!data.success) {
         document.getElementById("errorBox").innerHTML = `
             <div class="error-card">
                 <div class="error-icon">❌</div>
@@ -25,7 +25,7 @@ function preencherResultado(data) {
         return;
     }
 
-    const resultados = data.resultado.resultados;
+    const resultados = data.resultados;
 
     let success = 0, warning = 0, error = 0;
 
@@ -92,12 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!uploadForm) return;
 
-    fileInput.addEventListener('change', function(e) {
+    fileInput.addEventListener('change', function (e) {
         const fileName = e.target.files[0]?.name || 'Nenhum arquivo selecionado';
         fileNameDisplay.textContent = fileName;
     });
 
-    uploadForm.addEventListener('submit', async function(e) {
+    uploadForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         if (!fileInput.files.length) {
@@ -110,22 +110,37 @@ document.addEventListener("DOMContentLoaded", () => {
         btnText.textContent = 'Processando...';
         loadingOverlay.style.display = 'flex';
 
-    const formData = new FormData(); 
-    formData.append("file", fileInput.files[0]); 
-    try { const res = await fetch(`${API_URL}/analisar`, { method: "POST", body: formData }); 
-        const data = await res.json(); 
-        localStorage.setItem("resultado", JSON.stringify({ 
-        filename: "arquivo.xml", 
-        resultado: { 
-            success: true, 
-            resultados: [ 
-                { status: "success", message: "OK..." }, 
-                { status: "warning", message: "Atenção..." }, 
-                { status: "error", message: "Erro..." } ] } })); 
-                
-                window.location.href = "resultado.html"; } 
-                
-        catch (err) { alert("Erro ao enviar arquivo"); console.error(err); }
+        const formData = new FormData();
+        formData.append("file", fileInput.files[0]);
+
+        try {
+            const res = await fetch(`${API_URL}/analisar`, {
+                method: "POST",
+                body: formData
+            });
+
+            // Verifica erro HTTP (500, 400, etc)
+            if (!res.ok) {
+                throw new Error("Erro no servidor");
+            }
+
+            const data = await res.json();
+
+            console.log("Resposta backend:", data); // DEBUG
+
+            // Salva resultado real
+            localStorage.setItem("resultado", JSON.stringify(data));
+
+            // Redireciona
+            window.location.href = "resultado.html";
+
+        } catch (err) {
+            alert("Erro ao enviar ou processar arquivo");
+            console.error(err);
+
+            // opcional: esconder loading
+            // loadingOverlay.style.display = 'none';
+        }
     });
 
 });
