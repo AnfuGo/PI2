@@ -1,4 +1,4 @@
-const API_URL = "https://pi2-production.up.railway.app";
+const API_URL = "http://analysergrafcet.duckdns.org:5000"
 
 // =======================
 // NAVEGAÇÃO
